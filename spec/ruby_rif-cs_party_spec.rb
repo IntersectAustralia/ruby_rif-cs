@@ -1,11 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe "RIFCS:Party" do
+describe "RIFCS::Party" do
   class PartyExample
     require 'date'
-    include RIFCS:Party
+    include RIFCS::Party
 
-    attr_reader party_key, party_group
+    attr_reader :party_key
 
     def initialize(key='a key')
       @party_key = key
@@ -33,19 +33,19 @@ describe "RIFCS:Party" do
 
     def party_identifier
       [
-        { value : 'http://example.com', type : 'uri' },
-        { value : '123', type : 'local' }
+        { value: 'http://example.com', type: 'uri' },
+        { value: '123', type: 'local' }
       ]
     end
     
     def party_names
       [
         {
-          type : 'primary',
-          nameparts : {
-            title : 'Dr',
-            given : 'John',
-            family : 'Doe'
+          type: 'primary',
+          nameparts: {
+            title: 'Dr',
+            given: 'John',
+            family: 'Doe'
           }
         },
       ]
@@ -54,39 +54,39 @@ describe "RIFCS:Party" do
     def party_related_infos
       [
         {
-          type : 'website',
-          identifier : {
-            value : 'http://example.com/personalsites/foo',
-            type : 'uri'
+          type: 'website',
+          identifier: {
+            value: 'http://example.com/personalsites/foo',
+            type: 'uri'
           },
-          title : 'This person\'s blog',
-          notes : 'Another blog'
+          title: 'This person\'s blog',
+          notes: 'Another blog'
         },
         {
-          type : 'publication',
-          identifier : {
-            value : '111',
-            type : 'isbn'
+          type: 'publication',
+          identifier: {
+            value: '111',
+            type: 'isbn'
           },
-          title : 'The Ordering of Things',
-          notes : 'Not available'
+          title: 'The Ordering of Things',
+          notes: 'Not available'
         }
       ]
     end
 
     def party_related_objects
       {
-        hasAssociationWith : [
+        hasAssociationWith: [
           {
-            key : 'b party',
-            relation : {
-              description : 'Supervisor'
+            key: 'b party',
+            relation: {
+              description: 'Supervisor'
             }
           }
         ],
-        isMemberOf : [
+        isMemberOf: [
           {
-            key : 'some group'
+            key: 'some group'
           }
         ]
       }
@@ -95,37 +95,37 @@ describe "RIFCS:Party" do
     def party_locations
       [
         {
-          datefrom : Time.now,
-          addresses : [
+          datefrom: Time.now,
+          addresses: [
             {
-              electronic : [
+              electronic: [
                 {
-                  type : 'email',
-                  value : 'joe@example.com'
+                  type: 'email',
+                  value: 'joe@example.com'
                 },
                 {
-                  type : 'uri',
-                  value : "http://example.com/people/#{@party_key}",
-                  args : [
-                    { value : 'placeholder', required : 'false' }
+                  type: 'uri',
+                  value: "http://example.com/people/#{@party_key}",
+                  args: [
+                    { value: 'placeholder', required: 'false' }
                   ]
                 }
               ],
-              physical : [
+              physical: [
                 {
-                  type : 'postalAddress',
-                  addressparts : [
+                  type: 'postalAddress',
+                  addressparts: [
                     {
-                      type : 'country',
-                      value : 'Austrlia'
+                      type: 'country',
+                      value: 'Austrlia'
                     },
                   ]
                 },
                 {
-                  addressparts : [
+                  addressparts: [
                     {
-                      type : 'telephoneNumber',
-                      value : '+61 2 9123 4567'
+                      type: 'telephoneNumber',
+                      value: '+61 2 9123 4567'
                     }
                   ]
                 }
@@ -139,27 +139,27 @@ describe "RIFCS:Party" do
     def party_coverage
       [
         {
-          spatials : [
+          spatials: [
             {
-              value : '<gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"><gmlcoordinates>45.67, 88.56</gmlcoordinates></gmlPoint>',
-              type : 'gml'
+              value: '<gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"><gmlcoordinates>45.67, 88.56</gmlcoordinates></gmlPoint>',
+              type: 'gml'
             }
           ],
-          temporals : [
+          temporals: [
             {
-              dates : [
+              dates: [
                 {
-                  value : Time.now.utc,
-                  dateformat : 'UTC',
-                  type : 'dateFrom'
+                  value: Time.now.utc,
+                  dateformat: 'UTC',
+                  type: 'dateFrom'
                 },
                 {
-                  value : (DateTime.now >> 12).to_time.utc,
-                  dateformat : 'UTC',
-                  type : 'dateTo'
+                  value: (DateTime.now >> 12).to_time.utc,
+                  dateformat: 'UTC',
+                  type: 'dateTo'
                 },
               ],
-              text : ['Self destructs in 1 year']
+              text: ['Self destructs in 1 year']
             }
           ]
         }
@@ -169,13 +169,13 @@ describe "RIFCS:Party" do
     def party_description
       [
         {
-          value : 'A researcher',
-          type : 'brief',
-          'xmllang' : nil
+          value: 'A researcher',
+          type: 'brief',
+          'xmllang' => nil
         },
         {
-          value : 'Not just any researcher',
-          type : 'full'
+          value: 'Not just any researcher',
+          type: 'full'
         }
       ]
     end
@@ -183,11 +183,11 @@ describe "RIFCS:Party" do
     def party_existence_dates
       [
         {
-          startdate : {
-            value : Time.now.utc,
-            dateformat : 'UTC'
+          startdate: {
+            value: Time.now.utc,
+            dateformat: 'UTC'
           },
-          enddate : {
+          enddate: {
           }
         }
       ]
@@ -196,17 +196,17 @@ describe "RIFCS:Party" do
     def party_rights
       [
         {
-          rightsstatement : {
-            rightsuri : 'http://www.intersect.org.au/policies',
-            value : 'Copyright 2012 Intersect Australia Ltd.'
+          rightsstatement: {
+            rightsuri: 'http://www.intersect.org.au/policies',
+            value: 'Copyright 2012 Intersect Australia Ltd.'
           },
-          licence : {
-            value : 'Attribution (CC BY)',
-            rightsuri : 'http://creativecommons.org/licenses/by/3.0',
-            type : ''
+          licence: {
+            value: 'Attribution (CC BY)',
+            rightsuri: 'http://creativecommons.org/licenses/by/3.0',
+            type: ''
           },
-          accessrights : {
-            value : 'Available to all without restriction'
+          accessrights: {
+            value: 'Available to all without restriction'
           }
         }
       ]
@@ -215,8 +215,8 @@ describe "RIFCS:Party" do
     def party_subjects
       [
         {
-          value : '123456',
-          type : 'anzsrc-for'
+          value: '123456',
+          type: 'anzsrc-for'
         }
       ]
     end
@@ -231,8 +231,8 @@ describe "RIFCS:Party" do
   describe "should not display missing optional components" do
     it "should not show originating source" do
       class PartyExampleSub < PartyExample
-        include RIFCS:Party
-        undef_method party_originating_source
+        include RIFCS::Party
+        undef_method :party_originating_source
       end
       foo = PartyExampleSub.new
       puts foo.to_rifcs.to_xml
