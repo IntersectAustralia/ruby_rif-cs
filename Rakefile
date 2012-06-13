@@ -14,12 +14,12 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "ruby_rif-cs"
-  gem.homepage = "http://github.com/seandmccarthy/ruby_rif-cs"
+  gem.name = "rif-cs"
+  gem.homepage = "http://github.com/IntersectAustralia/ruby_rif-cs"
   gem.license = "MIT"
   gem.summary = %Q{TODO: one-line summary of your gem}
   gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "sean@clanmccarthy.net"
+  gem.email = "sean@intersect.org.au"
   gem.authors = ["Sean McCarthy"]
   # dependencies defined in Gemfile
 end
