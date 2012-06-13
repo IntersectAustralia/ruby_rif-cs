@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sean McCarthy"]
   s.date = "2012-06-13"
-  s.description = "TODO: longer description of your gem"
+  s.description = "Instrument your class to return RIF-CS"
   s.email = "sean@intersect.org.au"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "VERSION",
     "lib/ruby_rif-cs.rb",
     "lib/ruby_rif-cs/party.rb",
+    "rif-cs.gemspec",
     "spec/ruby_rif-cs_party_spec.rb",
     "spec/ruby_rif-cs_spec.rb",
     "spec/spec_helper.rb"
@@ -35,7 +36,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.15"
-  s.summary = "TODO: one-line summary of your gem"
+  s.summary = "Instrument your class to return RIF-CS"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3

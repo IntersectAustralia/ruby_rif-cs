@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "rif-cs"
   gem.homepage = "http://github.com/IntersectAustralia/ruby_rif-cs"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Instrument your class to return RIF-CS}
+  gem.description = %Q{Instrument your class to return RIF-CS}
   gem.email = "sean@intersect.org.au"
   gem.authors = ["Sean McCarthy"]
   # dependencies defined in Gemfile
