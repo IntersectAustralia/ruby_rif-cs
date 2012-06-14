@@ -1,6 +1,6 @@
 = ruby_rif-cs
 
-A module to help generate RIF-CS
+A module to help generate {RIF-CS}[http://ands.org.au/resource/rif-cs.html]
 
 == Copyright
 

@@ -48,7 +48,6 @@ module RIFCS
                 xml.existenceDates_ do
                   [:startDate, :endDate].each do |datetype|
                     date_obj = dates[datetype.downcase]
-puts date_obj.inspect
                     next if date_obj.nil?
                     xml.send(datetype, date_obj[:value], :dateFormat => date_obj[:dateformat])
                   end

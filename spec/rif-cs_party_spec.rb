@@ -223,7 +223,7 @@ describe "RIFCS::Party" do
 
   end
 
-  it "should give RIF-CS XML for a model" do
+  it "should give a RIF-CS XML Party record for a model" do
     foo = PartyExample.new
     puts foo.to_rifcs.to_xml
   end
