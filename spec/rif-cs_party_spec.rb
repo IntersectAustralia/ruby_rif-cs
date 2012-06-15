@@ -15,10 +15,6 @@ describe "RIFCS::Party" do
       'test group'
     end
 
-    #def party_key
-      #@key
-    #end
-
     def party_originating_source
       'tomato'
     end
@@ -28,10 +24,10 @@ describe "RIFCS::Party" do
     end
 
     def party_date_modified
-      Time.now.to_s
+      Time.new(2012, 6, 14).utc
     end
 
-    def party_identifier
+    def party_identifiers
       [
         { value: 'http://example.com', type: 'uri' },
         { value: '123', type: 'local' }
@@ -42,16 +38,16 @@ describe "RIFCS::Party" do
       [
         {
           type: 'primary',
-          nameparts: {
-            title: 'Dr',
-            given: 'John',
-            family: 'Doe'
-          }
+          name_parts: [
+            { type: 'title', value: 'Dr' },
+            { type: 'given', value: 'John' },
+            { type: 'family', value: 'Doe' }
+          ]
         },
       ]
     end
 
-    def party_related_infos
+    def party_related_info
       [
         {
           type: 'website',
@@ -76,7 +72,7 @@ describe "RIFCS::Party" do
 
     def party_related_objects
       {
-        hasAssociationWith: [
+        has_association_with: [
           {
             key: 'b party',
             relation: {
@@ -84,7 +80,7 @@ describe "RIFCS::Party" do
             }
           }
         ],
-        isMemberOf: [
+        is_member_of: [
           {
             key: 'some group'
           }
@@ -95,7 +91,7 @@ describe "RIFCS::Party" do
     def party_locations
       [
         {
-          datefrom: Time.now,
+          date_from: Time.new(2012, 6, 14).utc,
           addresses: [
             {
               electronic: [
@@ -114,7 +110,7 @@ describe "RIFCS::Party" do
               physical: [
                 {
                   type: 'postalAddress',
-                  addressparts: [
+                  address_parts: [
                     {
                       type: 'country',
                       value: 'Austrlia'
@@ -122,7 +118,7 @@ describe "RIFCS::Party" do
                   ]
                 },
                 {
-                  addressparts: [
+                  address_parts: [
                     {
                       type: 'telephoneNumber',
                       value: '+61 2 9123 4567'
@@ -149,13 +145,13 @@ describe "RIFCS::Party" do
             {
               dates: [
                 {
-                  value: Time.now.utc,
-                  dateformat: 'UTC',
+                  value: Time.new(2012, 6, 14).utc,
+                  date_format: 'UTC',
                   type: 'dateFrom'
                 },
                 {
-                  value: (DateTime.now >> 12).to_time.utc,
-                  dateformat: 'UTC',
+                  value: Time.new(2013, 6, 14).utc,
+                  date_format: 'UTC',
                   type: 'dateTo'
                 },
               ],
@@ -166,7 +162,7 @@ describe "RIFCS::Party" do
       ]
     end
 
-    def party_description
+    def party_descriptions
       [
         {
           value: 'A researcher',
@@ -183,11 +179,11 @@ describe "RIFCS::Party" do
     def party_existence_dates
       [
         {
-          startdate: {
-            value: Time.now.utc,
-            dateformat: 'UTC'
+          start_date: {
+            value: Time.new(2012, 6, 14).utc,
+            date_format: 'UTC'
           },
-          enddate: {
+          end_date: {
           }
         }
       ]
@@ -196,16 +192,16 @@ describe "RIFCS::Party" do
     def party_rights
       [
         {
-          rightsstatement: {
-            rightsuri: 'http://www.intersect.org.au/policies',
+          rights_statement: {
+            rights_uri: 'http://www.intersect.org.au/policies',
             value: 'Copyright 2012 Intersect Australia Ltd.'
           },
           licence: {
             value: 'Attribution (CC BY)',
-            rightsuri: 'http://creativecommons.org/licenses/by/3.0',
+            rights_uri: 'http://creativecommons.org/licenses/by/3.0',
             type: ''
           },
-          accessrights: {
+          access_rights: {
             value: 'Available to all without restriction'
           }
         }
