@@ -1,67 +1,52 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe "RIFCS::Collection" do
-  class CollectionExample
+describe "RIFCS::Activity" do
+  class ActivityExample
     require 'date'
-    include RIFCS::Collection
+    include RIFCS::Activity
 
-    attr_reader :collection_key
+    attr_reader :activity_key
 
     def initialize(key='a key')
-      @collection_key = key
+      @activity_key = key
     end
 
-    def collection_date_accessioned
-      Time.new(2012, 6, 14).utc
-    end
-
-    def collection_group
+    def activity_group
       'test group'
     end
 
-    def collection_originating_source
+    def activity_originating_source
       'tomato'
     end
 
-    def collection_type
-      'dataset'
+    def activity_type
+      'program'
     end
 
-    def collection_date_modified
+    def activity_date_modified
       Time.new(2012, 6, 14).utc
     end
 
-    def collection_identifiers
+    def activity_identifiers
       [
         { value: 'http://example.com', type: 'uri' },
         { value: '123', type: 'local' }
       ]
     end
     
-    def collection_names
+    def activity_names
       [
         {
           type: 'primary',
           name_parts: [
-            { type: 'title', value: 'Dr' },
-            { type: 'given', value: 'John' },
-            { type: 'family', value: 'Doe' }
+            { value: 'Testing of software' },
           ]
         },
       ]
     end
 
-    def collection_related_info
+    def activity_related_info
       [
-        {
-          type: 'website',
-          identifier: {
-            value: 'http://example.com/personalsites/foo',
-            type: 'uri'
-          },
-          title: 'This person\'s blog',
-          notes: 'Another blog'
-        },
         {
           type: 'publication',
           identifier: {
@@ -74,13 +59,13 @@ describe "RIFCS::Collection" do
       ]
     end
 
-    def collection_related_objects
+    def activity_related_objects
       {
         has_association_with: [
           {
             key: 'b party',
             relation: {
-              description: 'owner'
+              description: 'Supervisor'
             }
           }
         ],
@@ -92,7 +77,7 @@ describe "RIFCS::Collection" do
       }
     end
 
-    def collection_locations
+    def activity_locations
       [
         {
           date_from: Time.new(2012, 6, 14).utc,
@@ -105,7 +90,7 @@ describe "RIFCS::Collection" do
                 },
                 {
                   type: 'uri',
-                  value: "http://example.com/people/#{@collection_key}",
+                  value: "http://example.com/people/#{@activity_key}",
                   args: [
                     { value: 'placeholder', required: 'false' }
                   ]
@@ -136,7 +121,7 @@ describe "RIFCS::Collection" do
       ]
     end
 
-    def collection_coverage
+    def activity_coverage
       [
         {
           spatials: [
@@ -166,21 +151,21 @@ describe "RIFCS::Collection" do
       ]
     end
 
-    def collection_descriptions
+    def activity_descriptions
       [
         {
-          value: 'A researcher',
+          value: 'An activity',
           type: 'brief',
           'xmllang' => nil
         },
         {
-          value: 'Not just any researcher',
+          value: 'Not just any activity',
           type: 'full'
         }
       ]
     end
 
-    def collection_existence_dates
+    def activity_existence_dates
       [
         {
           start_date: {
@@ -193,7 +178,7 @@ describe "RIFCS::Collection" do
       ]
     end
 
-    def collection_rights
+    def activity_rights
       [
         {
           rights_statement: {
@@ -212,7 +197,7 @@ describe "RIFCS::Collection" do
       ]
     end
 
-    def collection_subjects
+    def activity_subjects
       [
         {
           value: '123456',
@@ -221,48 +206,10 @@ describe "RIFCS::Collection" do
       ]
     end
 
-    def collection_citation_info
-      [
-        {
-          full_citation: {
-            style: 'Harvard',
-            value: 'Australian Bureau of Agricultural and Resource Economics 2001, Aquaculture development in Australia: a review of key economic issues, ABARE, Canberra.'
-          },
-          citation_metadata: {
-            identifier: {
-              type: 'isbn',
-              value: '1234'
-            },
-            contributor: [
-              {
-                name_parts: [
-                  { type: 'title', value: 'Dr' },
-                  { type: 'given', value: 'Jane' },
-                  { type: 'family', value: 'Doe' }
-                ]
-              }
-            ],
-            title: 'Aquaculture development in Australia: a review of key economic issues',
-            edition: '1st',
-            publisher: 'ABARE',
-            place_published: 'Canberra',
-            date: [
-              {
-                value: '2012-06-14',
-                type: 'publicationDate'
-              }
-            ],
-            url: 'http://example.com',
-            context: 'local'
-          }
-        }
-      ]
-    end
-
   end
 
-  it "should give a RIF-CS XML Collection record for a model" do
-    foo = CollectionExample.new
+  it "should give a RIF-CS XML Activity record for a model" do
+    foo = ActivityExample.new
     puts foo.to_rifcs.to_xml
   end
 

@@ -1,6 +1,7 @@
 require 'rif-cs/party'
 require 'rif-cs/service'
 require 'rif-cs/collection'
+require 'rif-cs/activity'
 
 module RIFCS
 
