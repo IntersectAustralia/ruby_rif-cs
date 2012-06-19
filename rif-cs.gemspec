@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rif-cs"
-  s.version = "0.2.0"
+  s.version = "1.0.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sean McCarthy"]
-  s.date = "2012-06-14"
+  s.date = "2012-06-19"
   s.description = "Instrument your class to return RIF-CS"
   s.email = "sean@intersect.org.au"
   s.extra_rdoc_files = [
@@ -26,9 +26,17 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "lib/rif-cs.rb",
+    "lib/rif-cs/activity.rb",
+    "lib/rif-cs/collection.rb",
     "lib/rif-cs/party.rb",
     "lib/rif-cs/service.rb",
     "rif-cs.gemspec",
+    "spec/files/activity.xml",
+    "spec/files/collection.xml",
+    "spec/files/party.xml",
+    "spec/files/service.xml",
+    "spec/rif-cs_activity_spec.rb",
+    "spec/rif-cs_collection_spec.rb",
     "spec/rif-cs_party_spec.rb",
     "spec/rif-cs_service_spec.rb",
     "spec/rif-cs_spec.rb",
