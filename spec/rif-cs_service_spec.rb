@@ -216,7 +216,8 @@ describe "RIFCS::Service" do
   end
 
   it "should give a RIF-CS XML Service record for a model" do
-    foo = ServiceExample.new(nil)
-    puts foo.to_rifcs.to_xml
+    expected = IO.read(File.join(File.dirname(__FILE__), 'files', 'service.xml'))
+    service = ServiceExample.new(nil)
+    service.to_rifcs.to_xml.should eq(expected)
   end
 end

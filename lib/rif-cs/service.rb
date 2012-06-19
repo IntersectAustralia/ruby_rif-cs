@@ -10,7 +10,7 @@ module RIFCS
           xml.originatingSource_ service_originating_source if respond_to?(:service_originating_source)
 
           xml.service_(:dateModified => service_root[:date_modified], :type => service_root[:type]) do
-            RIFCS::list_of('service', :identifiers, xml)
+            RIFCS::list_of(service_identifiers, :identifiers, xml) if respond_to?(:service_identifiers)
 
             RIFCS::names(service_names, xml) if respond_to?(:service_names)
 
@@ -22,9 +22,9 @@ module RIFCS
 
             RIFCS::subjects(service_subjects, xml) if respond_to?(:service_subjects)
 
-            RIFCS::list_of('service', :descriptions, xml)
+            RIFCS::list_of(service_descriptions, :descriptions, xml) if respond_to?(:service_descriptions)
 
-            RIFCS::list_of('service', :access_policies, xml)
+            RIFCS::list_of(service_access_policies, :access_policies, xml) if respond_to?(:service_access_policies)
 
             RIFCS::rights(service_rights, xml) if respond_to?(:service_rights)
 

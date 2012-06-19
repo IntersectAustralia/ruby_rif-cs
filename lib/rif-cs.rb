@@ -9,11 +9,12 @@ module RIFCS
     lower_case_and_underscored_word.to_s.gsub(/(?:_)(.)/) { $1.upcase }
   end
 
-  def self.list_of(prefix, name, xml)
-    method_name = "#{prefix}_#{name}"
-    return unless respond_to?(method_name.to_sym)
-    send(method_name).each do |attrs|
-      xml.send(name, attrs[:value], attrs.select{|k| k != :value})
+  def self.list_of(list, name, xml)
+    #method_name = "#{prefix}_#{name}"
+    #return unless respond_to?(method_name.to_sym)
+#puts list.inspect
+    list.each do |attrs|
+      xml.send(camelize(name), attrs[:value], attrs.select{|k| k != :value})
     end
   end
 

@@ -262,8 +262,9 @@ describe "RIFCS::Collection" do
   end
 
   it "should give a RIF-CS XML Collection record for a model" do
-    foo = CollectionExample.new
-    puts foo.to_rifcs.to_xml
+    expected = IO.read(File.join(File.dirname(__FILE__), 'files', 'collection.xml'))
+    collection = CollectionExample.new
+    collection.to_rifcs.to_xml.should eq(expected)
   end
 
 end

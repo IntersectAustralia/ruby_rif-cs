@@ -11,7 +11,7 @@ module RIFCS
           xml.originatingSource_ party_originating_source if respond_to?(:party_originating_source)
 
           xml.party_(:dateModified => party_date_modified, :type => party_type) do
-            RIFCS::list_of('party', :identifiers, xml)
+            RIFCS::list_of(party_identifiers, :identifiers, xml) if respond_to?(:party_identifiers)
 
             RIFCS::names(party_names, xml) if respond_to?(:party_names)
 
@@ -19,7 +19,7 @@ module RIFCS
 
             RIFCS::coverage(party_coverage, xml) if respond_to?(:party_coverage)
 
-            RIFCS::list_of('party', :descriptions, xml)
+            RIFCS::list_of(party_descriptions, :descriptions, xml) if respond_to?(:party_descriptions)
 
             RIFCS::existence_dates(party_existence_dates, xml) if respond_to?(:party_existence_dates)
 

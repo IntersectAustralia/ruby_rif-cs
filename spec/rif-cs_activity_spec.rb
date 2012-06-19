@@ -209,8 +209,9 @@ describe "RIFCS::Activity" do
   end
 
   it "should give a RIF-CS XML Activity record for a model" do
-    foo = ActivityExample.new
-    puts foo.to_rifcs.to_xml
+    expected = IO.read(File.join(File.dirname(__FILE__), 'files', 'activity.xml'))
+    activity = ActivityExample.new
+    activity.to_rifcs.to_xml.should eq(expected)
   end
 
 end

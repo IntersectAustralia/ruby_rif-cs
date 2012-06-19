@@ -220,19 +220,9 @@ describe "RIFCS::Party" do
   end
 
   it "should give a RIF-CS XML Party record for a model" do
-    foo = PartyExample.new
-    puts foo.to_rifcs.to_xml
-  end
-
-  describe "should not display missing optional components" do
-    it "should not show originating source" do
-      class PartyExampleSub < PartyExample
-        include RIFCS::Party
-        undef_method :party_originating_source
-      end
-      foo = PartyExampleSub.new
-      puts foo.to_rifcs.to_xml
-    end
+    expected = IO.read(File.join(File.dirname(__FILE__), 'files', 'party.xml'))
+    party = PartyExample.new
+    party.to_rifcs.to_xml.should eq(expected)
   end
 
 end

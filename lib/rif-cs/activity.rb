@@ -11,7 +11,7 @@ module RIFCS
           xml.originatingSource_ activity_originating_source if respond_to?(:activity_originating_source)
 
           xml.activity_(:dateModified => activity_date_modified, :type => activity_type) do
-            RIFCS::list_of('activity', :identifiers, xml)
+            RIFCS::list_of(activity_identifiers, :identifiers, xml) if respond_to?(:activity_identifiers)
 
             RIFCS::names(activity_names, xml) if respond_to?(:activity_names)
 
@@ -19,7 +19,7 @@ module RIFCS
 
             RIFCS::coverage(activity_coverage, xml) if respond_to?(:activity_coverage)
 
-            RIFCS::list_of('activity', :descriptions, xml)
+            RIFCS::list_of(activity_descriptions, :descriptions, xml) if respond_to?(:activity_descriptions)
 
             RIFCS::existence_dates(activity_existence_dates, xml) if respond_to?(:activity_existence_dates)
 
