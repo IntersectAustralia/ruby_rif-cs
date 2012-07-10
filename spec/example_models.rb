@@ -703,11 +703,12 @@ class ServiceExample
     'http://www.intersect.org.au'
   end
 
-  def service_root
-    {
-      date_modified: Time.new(2012, 6, 14).utc,
-      type: 'create'
-    }
+  def service_date_modified
+    Time.new(2012, 6, 14).utc
+  end
+
+  def service_type
+    'create'
   end
 
   def service_identifiers
