@@ -172,7 +172,7 @@ module RIFCS
     doc.root = container
     reg_elems = reg_obj.doc.root.dup
     container.add_child(reg_elems)
-    doc.to_xml
+    doc.root.to_xml
   end
 
 end
