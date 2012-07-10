@@ -163,5 +163,17 @@ module RIFCS
     end
   end
 
+  def to_rif(encoding='UTF-8')
+    reg_obj = to_registry_node
+    doc = Nokogiri::XML::Document.new
+    doc.encoding = encoding
+    container = Nokogiri::XML::Node.new('registryObjects', doc)
+    container['xsi:schemaLocation'] = 'http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd'
+    doc.root = container
+    reg_elems = reg_obj.doc.root.dup
+    container.add_child(reg_elems)
+    doc.to_xml
+  end
+
 end
 

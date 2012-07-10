@@ -3,7 +3,7 @@ module RIFCS
     include RIFCS
     require 'nokogiri'
 
-    def to_rifcs(encoding='UTF-8')
+    def to_registry_node(encoding='UTF-8')
       Nokogiri::XML::Builder.new(:encoding => encoding) do |xml|
         xml.registryObject_(:group => party_group) do
 
@@ -39,7 +39,6 @@ module RIFCS
     def party_key
       raise "Supply a party_key attribute or implement a method"
     end
-
 
   end
 end

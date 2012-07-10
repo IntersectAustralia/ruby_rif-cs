@@ -3,7 +3,7 @@ module RIFCS
     include RIFCS
     require 'nokogiri'
 
-    def to_rifcs(encoding='UTF-8')
+    def to_registry_node(encoding='UTF-8')
       Nokogiri::XML::Builder.new(:encoding => encoding) do |xml|
         xml.registryObject_(:group => service_group) do
           xml.key_ service_key
