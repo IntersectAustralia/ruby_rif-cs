@@ -12,12 +12,22 @@ def tests(record_type)
 
   it "should give a #{record_type} record wrapped in a registryObjects tag" do
     expected = IO.read(File.join(File.dirname(__FILE__), 'files', "#{record_type.downcase}.xml"))
-    record.to_rif.should == expected
+    record.to_rif.strip.should == expected.strip
   end
 end
 
-%w{Activity Collection Party Service}.each do |record|
-  describe "RIFCS::#{record}" do
-    tests(record)
-  end
+describe "RIFCS::Activity" do
+  tests('Activity')
+end
+
+describe "RIFCS::Collection" do
+  tests('Collection')
+end
+
+describe "RIFCS::Party" do
+  tests('Party')
+end
+
+describe "RIFCS::Service" do
+  tests('Service')
 end

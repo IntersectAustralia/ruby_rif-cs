@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <registryObjects xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
   <registryObject group="test group">
     <key>a key</key>
