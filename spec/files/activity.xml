@@ -5,7 +5,7 @@
     <activity dateModified="2012-06-13 14:00:00 UTC" type="program">
       <identifiers type="uri">http://example.com</identifiers>
       <identifiers type="local">123</identifiers>
-      <name dateFrom="" dateTo="" type="primary" xml:lang="">
+      <name dateFrom="" dateTo="" type="primary" xml:lang="en">
         <namePart type="">Testing of software</namePart>
       </name>
       <location dateFrom="2012-06-13 14:00:00 UTC" dateTo="" type="">
@@ -17,23 +17,23 @@
             <value>http://example.com/people/a key</value>
             <arg required="false" type="" use="">placeholder</arg>
           </electronic>
-          <physical type="postalAddress" xml:lang="">
+          <physical type="postalAddress" xml:lang="en">
             <addressPart type="country">Austrlia</addressPart>
           </physical>
-          <physical type="" xml:lang="">
+          <physical type="" xml:lang="en">
             <addressPart type="telephoneNumber">+61 2 9123 4567</addressPart>
           </physical>
         </address>
       </location>
       <coverage>
-        <spatial type="gml" xml:lang="">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
+        <spatial type="gml" xml:lang="en">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
         <temporal>
           <date dateFormat="UTC" type="dateFrom">2012-06-13 14:00:00 UTC</date>
           <date dateFormat="UTC" type="dateTo">2013-06-13 14:00:00 UTC</date>
           <text>Self destructs in 1 year</text>
         </temporal>
       </coverage>
-      <descriptions type="brief" xmllang="">An activity</descriptions>
+      <descriptions type="brief" xmllang="en">An activity</descriptions>
       <descriptions type="full">Not just any activity</descriptions>
       <existenceDates>
         <startDate dateFormat="UTC">2012-06-13 14:00:00 UTC</startDate>
@@ -54,7 +54,7 @@
         <licence rightsUri="http://creativecommons.org/licenses/by/3.0">Attribution (CC BY)</licence>
         <accessRights rightsUri="">Available to all without restriction</accessRights>
       </rights>
-      <subject termIdentifier="" type="anzsrc-for" xml:lang="">123456</subject>
+      <subject termIdentifier="" type="anzsrc-for" xml:lang="en">123456</subject>
     </activity>
   </registryObject>
 </registryObjects>

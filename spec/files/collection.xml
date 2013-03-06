@@ -5,7 +5,7 @@
     <collection dateModified="2012-06-13 14:00:00 UTC" type="dataset" dateAccessioned="2012-06-13 14:00:00 UTC">
       <identifiers type="uri">http://example.com</identifiers>
       <identifiers type="local">123</identifiers>
-      <name dateFrom="" dateTo="" type="primary" xml:lang="">
+      <name dateFrom="" dateTo="" type="primary" xml:lang="en">
         <namePart type="title">Dr</namePart>
         <namePart type="given">John</namePart>
         <namePart type="family">Doe</namePart>
@@ -19,16 +19,16 @@
             <value>http://example.com/people/a key</value>
             <arg required="false" type="" use="">placeholder</arg>
           </electronic>
-          <physical type="postalAddress" xml:lang="">
+          <physical type="postalAddress" xml:lang="en">
             <addressPart type="country">Austrlia</addressPart>
           </physical>
-          <physical type="" xml:lang="">
+          <physical type="" xml:lang="en">
             <addressPart type="telephoneNumber">+61 2 9123 4567</addressPart>
           </physical>
         </address>
       </location>
       <coverage>
-        <spatial type="gml" xml:lang="">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
+        <spatial type="gml" xml:lang="en">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
         <temporal>
           <date dateFormat="UTC" type="dateFrom">2012-06-13 14:00:00 UTC</date>
           <date dateFormat="UTC" type="dateTo">2013-06-13 14:00:00 UTC</date>
@@ -45,8 +45,8 @@
         <key>some group</key>
         <relation type="isMemberOf"/>
       </relatedObject>
-      <subject termIdentifier="" type="anzsrc-for" xml:lang="">123456</subject>
-      <descriptions type="brief" xmllang="">A researcher</descriptions>
+      <subject termIdentifier="" type="anzsrc-for" xml:lang="en">123456</subject>
+      <descriptions type="brief" xmllang="en">A researcher</descriptions>
       <descriptions type="full">Not just any researcher</descriptions>
       <rights>
         <rightsStatement rightsUri="http://www.intersect.org.au/policies">Copyright 2012 Intersect Australia Ltd.</rightsStatement>

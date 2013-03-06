@@ -88,7 +88,7 @@ EOX
       <electronic type="email">
         <value>joe@example.com</value>
       </electronic>
-      <physical type="postalAddress" xml:lang="">
+      <physical type="postalAddress" xml:lang="en">
         <addressPart type="country">Austrlia</addressPart>
       </physical>
     </address>
@@ -104,7 +104,7 @@ EOX
     @xml.to_xml.should == <<EOX
 <?xml version="1.0"?>
 <root>
-  <spatial type="gml" xml:lang="">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
+  <spatial type="gml" xml:lang="en">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
 </root>
 EOX
   end
@@ -131,7 +131,7 @@ EOX
       @xml.to_xml.should == <<EOX
 <?xml version="1.0"?>
 <root>
-  <physical type="postalAddress" xml:lang="">
+  <physical type="postalAddress" xml:lang="en">
     <addressPart type="country">Austrlia</addressPart>
   </physical>
 </root>
@@ -149,7 +149,7 @@ EOX
     <electronic type="email">
       <value>joe@example.com</value>
     </electronic>
-    <physical type="postalAddress" xml:lang="">
+    <physical type="postalAddress" xml:lang="en">
       <addressPart type="country">Austrlia</addressPart>
     </physical>
   </address>
@@ -229,7 +229,7 @@ EOX
 <?xml version="1.0"?>
 <root>
   <coverage>
-    <spatial type="gml" xml:lang="">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
+    <spatial type="gml" xml:lang="en">&lt;gmlPoint gmlid="p21" srsName="http://www.opengis.net/def/crs/EPSG/0/4326"&gt;&lt;gmlcoordinates&gt;45.67, 88.56&lt;/gmlcoordinates&gt;&lt;/gmlPoint&gt;</spatial>
     <temporal>
       <date dateFormat="UTC" type="dateFrom">2012-06-13 14:00:00 UTC</date>
       <date dateFormat="UTC" type="dateTo">2013-06-13 14:00:00 UTC</date>
@@ -352,7 +352,7 @@ EOX
     @xml.to_xml.should == <<EOX
 <?xml version="1.0"?>
 <root>
-  <subject termIdentifier="http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/DE380FC648D83027CA257418000447D6?opendocument" type="anzsrc-for" xml:lang="">123456</subject>
+  <subject termIdentifier="http://www.abs.gov.au/Ausstats/abs@.nsf/Latestproducts/DE380FC648D83027CA257418000447D6?opendocument" type="anzsrc-for" xml:lang="en">123456</subject>
 </root>
 EOX
   end

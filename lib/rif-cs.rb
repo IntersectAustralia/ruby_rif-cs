@@ -3,7 +3,10 @@ require 'rif-cs/service'
 require 'rif-cs/collection'
 require 'rif-cs/activity'
 
+
 module RIFCS
+
+  RIFCS_DEFAULT_LANG = 'en'
 
   def self.camelize(lower_case_and_underscored_word)
     lower_case_and_underscored_word.to_s.gsub(/(?:_)(.)/) { $1.upcase }
@@ -21,7 +24,7 @@ module RIFCS
   def self.names(list, xml)
     return if list.nil? or list.empty?
     list.each do |name|
-      xml.name_(:dateFrom => name[:date_from], :dateTo => name[:date_to], :type => name[:type], 'xml:lang' => name[:xmllang]) do
+      xml.name_(:dateFrom => name[:date_from], :dateTo => name[:date_to], :type => name[:type], 'xml:lang' => getLang(name)) do
         name[:name_parts].each do |part|
           xml.namePart_(part[:value], :type => part[:type])
         end
@@ -66,13 +69,14 @@ module RIFCS
   def self.physical_addresses(addr_list, xml)
     return if addr_list.nil? or addr_list.empty?
     addr_list.each do |addr|
-      xml.physical_(:type => addr[:type], 'xml:lang' => addr[:xmllang]) do
+      xml.physical_(:type => addr[:type], 'xml:lang' => getLang(addr) ) do
         addr[:address_parts].each do |addr_part|
           xml.addressPart_(addr_part[:value], :type => addr_part[:type])
         end
       end
     end
   end
+
 
   def self.coverage(list, xml)
     return if list.nil? or list.empty?
@@ -87,7 +91,7 @@ module RIFCS
   def self.spatials(spatial_list, xml)
     return if spatial_list.nil? or spatial_list.empty?
     spatial_list.each do |addr|
-      xml.spatial_(addr[:value], :type => addr[:type], 'xml:lang' => addr[:xmllang])
+      xml.spatial_(addr[:value], :type => addr[:type], 'xml:lang' => getLang(addr))
     end
   end
 
@@ -146,7 +150,7 @@ module RIFCS
   def self.subjects(list, xml)
     return if list.nil? or list.empty?
     list.each do |subject|
-      xml.subject_(subject[:value], :termIdentifier => subject[:term_identifier], :type => subject[:type], 'xml:lang' => subject[:xmllang])
+      xml.subject_(subject[:value], :termIdentifier => subject[:term_identifier], :type => subject[:type], 'xml:lang' => getLang(subject))
     end
   end
 
@@ -163,6 +167,14 @@ module RIFCS
     end
   end
 
+  def self.getLang(hash)
+    if hash[:xmllang]
+      hash[:xmllang]
+    else
+      RIFCS_DEFAULT_LANG
+    end
+  end
+
   def to_rif(encoding='UTF-8')
     reg_obj = to_registry_node
     doc = Nokogiri::XML::Document.new
@@ -170,7 +182,6 @@ module RIFCS
     container = Nokogiri::XML::Node.new('registryObjects', doc)
     container['xmlns'] = "http://ands.org.au/standards/rif-cs/registryObjects"
     container['xmlns:xsi'] = "http://www.w3.org/2001/XMLSchema-instance"
-    container['xsi:schemaLocation'] = 'http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd'
     container['xsi:schemaLocation'] = 'http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd'
     doc.root = container
     reg_elems = reg_obj.doc.root.dup
