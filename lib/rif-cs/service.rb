@@ -22,7 +22,7 @@ module RIFCS
 
             RIFCS::subjects(service_subjects, xml) if respond_to?(:service_subjects)
 
-            RIFCS::list_of(service_descriptions, :descriptions, xml) if respond_to?(:service_descriptions)
+            RIFCS::list_of(service_descriptions, :description, xml) if respond_to?(:service_descriptions)
 
             RIFCS::list_of(service_access_policies, :access_policies, xml) if respond_to?(:service_access_policies)
 

@@ -19,7 +19,7 @@ module RIFCS
 
             RIFCS::coverage(party_coverage, xml) if respond_to?(:party_coverage)
 
-            RIFCS::list_of(party_descriptions, :descriptions, xml) if respond_to?(:party_descriptions)
+            RIFCS::list_of(party_descriptions, :description, xml) if respond_to?(:party_descriptions)
 
             RIFCS::existence_dates(party_existence_dates, xml) if respond_to?(:party_existence_dates)
 

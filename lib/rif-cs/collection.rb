@@ -23,7 +23,7 @@ module RIFCS
 
             RIFCS::subjects(collection_subjects, xml) if respond_to?(:collection_subjects)
 
-            RIFCS::list_of(collection_descriptions, :descriptions, xml) if respond_to?(:collection_descriptions)
+            RIFCS::list_of(collection_descriptions, :description, xml) if respond_to?(:collection_descriptions)
 
             RIFCS::rights(collection_rights, xml) if respond_to?(:collection_rights)
 

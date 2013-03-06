@@ -19,7 +19,7 @@ module RIFCS
 
             RIFCS::coverage(activity_coverage, xml) if respond_to?(:activity_coverage)
 
-            RIFCS::list_of(activity_descriptions, :descriptions, xml) if respond_to?(:activity_descriptions)
+            RIFCS::list_of(activity_descriptions, :description, xml) if respond_to?(:activity_descriptions)
 
             RIFCS::existence_dates(activity_existence_dates, xml) if respond_to?(:activity_existence_dates)
 
