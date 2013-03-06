@@ -168,6 +168,9 @@ module RIFCS
     doc = Nokogiri::XML::Document.new
     doc.encoding = encoding
     container = Nokogiri::XML::Node.new('registryObjects', doc)
+    container['xmlns'] = "http://ands.org.au/standards/rif-cs/registryObjects"
+    container['xmlns:xsi'] = "http://www.w3.org/2001/XMLSchema-instance"
+    container['xsi:schemaLocation'] = 'http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd'
     container['xsi:schemaLocation'] = 'http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd'
     doc.root = container
     reg_elems = reg_obj.doc.root.dup
