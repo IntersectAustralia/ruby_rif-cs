@@ -26,7 +26,7 @@ module RIFCS
     list.each do |name|
       xml.name_(:dateFrom => name[:date_from], :dateTo => name[:date_to], :type => name[:type], 'xml:lang' => getLang(name)) do
         name[:name_parts].each do |part|
-          xml.namePart_(part[:value], :type => part[:type])
+          xml.namePart_(part[:value], :type => part[:type]) if part[:value] != nil
         end
       end
     end
