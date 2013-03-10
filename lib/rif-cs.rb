@@ -15,7 +15,7 @@ module RIFCS
   def self.list_of(list, name, xml)
     #method_name = "#{prefix}_#{name}"
     #return unless respond_to?(method_name.to_sym)
-#puts list.inspect
+    #puts list.inspect
     list.each do |attrs|
       xml.send(camelize(name), attrs[:value], attrs.select{|k| k != :value})
     end
@@ -43,7 +43,8 @@ module RIFCS
   end
 
   def self.addresses(addr_list, xml)
-    return if addr_list.nil? or addr_list.empty?
+    return if addr_list.nil? or addr_list.empty? or (!has_electronic_addresses(addr_list) or !has_physical_addresses(addr_list))
+
     xml.address_ do
       addr_list.each do |addr|
         electronic_addresses(addr[:electronic], xml)
@@ -52,8 +53,18 @@ module RIFCS
     end
   end
 
+  def self.has_electronic_addresses(addr_list)
+    return false if addr_list.nil? or addr_list.empty?  or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
+    true
+  end
+
+  def self.has_physical_addresses(addr_list)
+    return false if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
+    true
+  end
+
   def self.electronic_addresses(addr_list, xml)
-    return if addr_list.nil? or addr_list.empty?
+    return if addr_list.nil? or addr_list.empty?  or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
     addr_list.each do |addr|
       xml.electronic_(:type => addr[:type]) do
         xml.value_ addr[:value]
@@ -67,7 +78,7 @@ module RIFCS
   end
 
   def self.physical_addresses(addr_list, xml)
-    return if addr_list.nil? or addr_list.empty?
+    return if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
     addr_list.each do |addr|
       xml.physical_(:type => addr[:type], 'xml:lang' => getLang(addr) ) do
         addr[:address_parts].each do |addr_part|
@@ -86,6 +97,11 @@ module RIFCS
         temporals(coverage[:temporals], xml)
       end
     end
+  end
+
+  def self.has_spatials(spatial_list)
+    return false if spatial_list.nil? or spatial_list.empty?
+    true
   end
 
   def self.spatials(spatial_list, xml)
@@ -133,7 +149,7 @@ module RIFCS
         xml.title_(info[:title]) if info.has_key?(:title)
         xml.notes(info[:notes]) if info.has_key?(:notes)
       end
-    end 
+    end
   end
 
   def self.rights(list, xml)
