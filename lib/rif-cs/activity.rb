@@ -11,7 +11,12 @@ module RIFCS
           xml.originatingSource_ activity_originating_source if respond_to?(:activity_originating_source)
 
           xml.activity_(:dateModified => activity_date_modified, :type => activity_type) do
-            RIFCS::list_of(activity_identifiers, :identifiers, xml) if respond_to?(:activity_identifiers)
+
+            if respond_to?(:activity_identifiers)
+              RIFCS::list_of(activity_identifiers, :identifiers, xml)
+            else
+              xml.identifier activity_key
+            end
 
             RIFCS::names(activity_names, xml) if respond_to?(:activity_names)
 

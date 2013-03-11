@@ -10,7 +10,12 @@ module RIFCS
           xml.originatingSource_ service_originating_source if respond_to?(:service_originating_source)
 
           xml.service_(:dateModified => service_date_modified, :type => service_type) do
-            RIFCS::list_of(service_identifiers, :identifiers, xml) if respond_to?(:service_identifiers)
+
+            if respond_to?(:service_identifiers)
+              RIFCS::list_of(service_identifiers, :identifiers, xml)
+            else
+              xml.identifier service_key
+            end
 
             RIFCS::names(service_names, xml) if respond_to?(:service_names)
 

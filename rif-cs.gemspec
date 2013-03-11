@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "rif-cs"
-  s.version = "1.2.8"
+  s.version = "1.2.9"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sean McCarthy"]
-  s.date = "2013-03-10"
+  s.date = "2013-03-11"
   s.description = "Instrument your class to return RIF-CS"
   s.email = "sean@intersect.org.au"
   s.extra_rdoc_files = [

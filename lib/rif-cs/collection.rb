@@ -11,7 +11,12 @@ module RIFCS
           xml.originatingSource_ collection_originating_source if respond_to?(:collection_originating_source)
 
           xml.collection_(:dateModified => collection_date_modified, :type => collection_type, :dateAccessioned => collection_date_accessioned) do
-            RIFCS::list_of(collection_identifiers, :identifiers, xml) if respond_to?(:collection_identifiers)
+
+            if respond_to?(:collection_identifiers)
+              RIFCS::list_of(collection_identifiers, :identifiers, xml)
+            else
+              xml.identifier collection_key
+            end
 
             RIFCS::names(collection_names, xml) if respond_to?(:collection_names)
 
