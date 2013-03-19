@@ -43,7 +43,7 @@ module RIFCS
   end
 
   def self.addresses(addr_list, xml)
-    return if addr_list.nil? or addr_list.empty? or (!has_electronic_addresses(addr_list) or !has_physical_addresses(addr_list))
+    return if addr_list.nil? or addr_list.empty? or (!has_electronic_addresses(addr_list) and !has_physical_addresses(addr_list))
 
     xml.address_ do
       addr_list.each do |addr|
@@ -54,12 +54,12 @@ module RIFCS
   end
 
   def self.has_electronic_addresses(addr_list)
-    return false if addr_list.nil? or addr_list.empty?  or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
+    return false if addr_list.nil? or addr_list.empty?  or (addr_list.size == 1 &&  addr_list[0][:electronic][0][:value].blank? )
     true
   end
 
   def self.has_physical_addresses(addr_list)
-    return false if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
+    return false if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:physical][0][:value].blank? )
     true
   end
 
@@ -78,7 +78,7 @@ module RIFCS
   end
 
   def self.physical_addresses(addr_list, xml)
-    return if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
+    return if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:address_parts][0][:value].blank? )
     addr_list.each do |addr|
       xml.physical_(:type => addr[:type], 'xml:lang' => getLang(addr) ) do
         addr[:address_parts].each do |addr_part|
