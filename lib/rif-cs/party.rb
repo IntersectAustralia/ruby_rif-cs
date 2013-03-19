@@ -15,7 +15,7 @@ module RIFCS
             if respond_to?(:party_identifiers)
               RIFCS::list_of(party_identifiers, :identifiers, xml)
             else
-              xml.identifier party_key
+              xml.identifier(party_key, :type => 'uri')
             end
 
             RIFCS::names(party_names, xml) if respond_to?(:party_names)

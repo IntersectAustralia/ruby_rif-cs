@@ -15,7 +15,7 @@ module RIFCS
             if respond_to?(:collection_identifiers)
               RIFCS::list_of(collection_identifiers, :identifiers, xml)
             else
-              xml.identifier collection_key
+              xml.identifier(collection_key, :type => 'uri')
             end
 
             RIFCS::names(collection_names, xml) if respond_to?(:collection_names)

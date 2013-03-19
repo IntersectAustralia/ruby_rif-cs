@@ -15,7 +15,7 @@ module RIFCS
             if respond_to?(:activity_identifiers)
               RIFCS::list_of(activity_identifiers, :identifiers, xml)
             else
-              xml.identifier activity_key
+              xml.identifier(activity_key, :type => 'uri')
             end
 
             RIFCS::names(activity_names, xml) if respond_to?(:activity_names)

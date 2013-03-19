@@ -14,7 +14,7 @@ module RIFCS
             if respond_to?(:service_identifiers)
               RIFCS::list_of(service_identifiers, :identifiers, xml)
             else
-              xml.identifier service_key
+              xml.identifier(service_key, :type => 'uri')
             end
 
             RIFCS::names(service_names, xml) if respond_to?(:service_names)
