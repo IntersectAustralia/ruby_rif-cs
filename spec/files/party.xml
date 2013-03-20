@@ -35,7 +35,7 @@
           <text>Self destructs in 1 year</text>
         </temporal>
       </coverage>
-      <descriptions type="brief" xmllang="en">A researcher</descriptions>
+      <descriptions type="brief" xml:lang="en">A researcher</descriptions>
       <descriptions type="full">Not just any researcher</descriptions>
       <existenceDates>
         <startDate dateFormat="UTC">2012-06-13 14:00:00 UTC</startDate>

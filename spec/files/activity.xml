@@ -33,7 +33,7 @@
           <text>Self destructs in 1 year</text>
         </temporal>
       </coverage>
-      <descriptions type="brief" xmllang="en">An activity</descriptions>
+      <descriptions type="brief" xml:lang="en">An activity</descriptions>
       <descriptions type="full">Not just any activity</descriptions>
       <existenceDates>
         <startDate dateFormat="UTC">2012-06-13 14:00:00 UTC</startDate>

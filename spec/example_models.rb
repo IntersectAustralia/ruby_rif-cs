@@ -164,7 +164,7 @@ class PartyExample
       {
         value: 'A researcher',
         type: 'brief',
-        'xmllang' => nil
+        'xml:lang' => nil
       },
       {
         value: 'Not just any researcher',
@@ -373,7 +373,7 @@ class ActivityExample
       {
         value: 'An activity',
         type: 'brief',
-        'xmllang' => nil
+        'xml:lang' => nil
       },
       {
         value: 'Not just any activity',
@@ -597,7 +597,7 @@ class CollectionExample
       {
         value: 'A researcher',
         type: 'brief',
-        'xmllang' => nil
+        'xml:lang' => nil
       },
       {
         value: 'Not just any researcher',

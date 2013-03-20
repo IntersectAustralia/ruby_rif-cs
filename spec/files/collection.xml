@@ -46,7 +46,7 @@
         <relation type="isMemberOf"/>
       </relatedObject>
       <subject termIdentifier="" type="anzsrc-for" xml:lang="en">123456</subject>
-      <descriptions type="brief" xmllang="en">A researcher</descriptions>
+      <descriptions type="brief" xml:lang="en">A researcher</descriptions>
       <descriptions type="full">Not just any researcher</descriptions>
       <rights>
         <rightsStatement rightsUri="http://www.intersect.org.au/policies">Copyright 2012 Intersect Australia Ltd.</rightsStatement>
