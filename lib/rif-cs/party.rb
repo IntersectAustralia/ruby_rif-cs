@@ -13,7 +13,7 @@ module RIFCS
           xml.party_(:dateModified => party_date_modified, :type => party_type) do
 
             if respond_to?(:party_identifiers)
-              RIFCS::list_of(party_identifiers, :identifiers, xml)
+              RIFCS::list_of(party_identifiers, :identifier, xml)
             else
               xml.identifier(party_key, :type => 'uri')
             end
