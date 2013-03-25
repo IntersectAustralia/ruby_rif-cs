@@ -127,6 +127,14 @@ module RIFCS
 
   def self.related_objects(obj, xml)
     return if obj.nil?
+    if obj.is_a?(Array)
+      related_objects_array(obj,xml)
+    else
+      related_object_map(obj, xml)
+    end
+  end
+
+  def self.related_object_map(obj, xml)
     obj.each do |rel_type, relations|
       relations.each do |rel|
         xml.relatedObject do
@@ -136,6 +144,21 @@ module RIFCS
               xml.send(key, value)
             end if rel.has_key?(:relation)
           end
+        end
+      end
+    end
+  end
+
+  def self.related_objects_array(obj, xml)
+    return if obj.nil?
+    obj.each do |relation|
+      rel = relation[:values]
+      xml.relatedObject do
+        xml.key(rel[:key])
+        xml.relation_(:type => camelize(relation[:name])) do
+          rel[:relation].each do |key, value|
+            xml.send(key, value)
+          end if rel.has_key?(:relation)
         end
       end
     end
