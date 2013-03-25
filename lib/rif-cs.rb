@@ -17,7 +17,7 @@ module RIFCS
     #return unless respond_to?(method_name.to_sym)
     #puts list.inspect
     list.each do |attrs|
-      xml.send(camelize(name), attrs[:value], attrs.select{|k| k != :value})
+      xml.send(camelize(name), attrs[:value], Hash[attrs.select{|k,v|  k != :value}])
     end
   end
 
