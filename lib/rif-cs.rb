@@ -26,7 +26,12 @@ module RIFCS
     list.each do |name|
       xml.name_(:dateFrom => name[:date_from], :dateTo => name[:date_to], :type => name[:type], 'xml:lang' => getLang(name)) do
         name[:name_parts].each do |part|
-          xml.namePart_(part[:value], :type => part[:type]) unless part[:value].blank?
+          # we will include the type attribute only if it specified
+          if part[:type].nil?
+            xml.namePart_(part[:value]) unless part[:value].blank?
+          else
+            xml.namePart_(part[:value], :type => part[:type]) unless part[:value].blank?
+          end
         end
       end
     end
