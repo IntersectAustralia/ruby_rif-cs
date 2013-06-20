@@ -24,7 +24,23 @@ module RIFCS
   def self.names(list, xml)
     return if list.nil? or list.empty?
     list.each do |name|
-      xml.name_(:dateFrom => name[:date_from], :dateTo => name[:date_to], :type => name[:type], 'xml:lang' => getLang(name)) do
+
+      # The attributes dateFrom and dateTo are optional,
+      # so we will put them to name element only when
+      # the string values are not empty and valid.
+      attributes = {}
+      if !name[:date_from].nil? and !name[:date_from].blank?
+        attributes[:dateFrom] = name[:date_from]
+      end
+
+      if !name[:date_to].nil? and !name[:date_to].blank?
+        attributes[:dateTo] = name[:date_to]
+      end
+
+      attributes[:type] = name[:type]
+      attributes['xml:lang'] = getLang(name)
+
+     xml.name_(attributes) do
         name[:name_parts].each do |part|
           # we will include the type attribute only if it specified
           if part[:type].nil?
@@ -40,7 +56,21 @@ module RIFCS
   def self.locations(list, xml)
     return if list.nil? or list.empty?
     list.each do |location|
-      xml.location_(:dateFrom => location[:date_from], :dateTo => location[:date_to], :type => location[:type]) do
+
+      # The attributes dateFrom and dateTo are optional,
+      # so we will put them to location element only when
+      # the string values are not empty and valid.
+      attributes = {}
+      if !location[:date_from].nil? and !location[:date_from].blank?
+        attributes[:dateFrom] = location[:date_from]
+      end
+
+      if !location[:date_to].nil? and !location[:date_to].blank?
+        attributes[:dateTo] = location[:date_to]
+      end
+
+      attributes[:type] = location[:type]
+      xml.location_(attributes) do
         addresses(location[:addresses], xml)
         spatials(location[:spatials], xml)
       end
