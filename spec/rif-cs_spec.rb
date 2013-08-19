@@ -83,7 +83,7 @@ EOX
     @xml.to_xml.should == <<EOX
 <?xml version="1.0"?>
 <root>
-  <location dateFrom="2012-06-13 14:00:00 UTC" dateTo="" type="">
+  <location dateFrom="2012-06-13 14:00:00 UTC">
     <address>
       <electronic type="email">
         <value>joe@example.com</value>

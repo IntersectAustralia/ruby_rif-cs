@@ -29,11 +29,11 @@ module RIFCS
       # so we will put them to name element only when
       # the string values are not empty and valid.
       attributes = {}
-      if !name[:date_from].nil? and !name[:date_from].blank?
+      if !name[:date_from].nil? and !name[:date_from].to_s.blank?
         attributes[:dateFrom] = name[:date_from]
       end
 
-      if !name[:date_to].nil? and !name[:date_to].blank?
+      if !name[:date_to].nil? and !name[:date_to].to_s.blank?
         attributes[:dateTo] = name[:date_to]
       end
 
@@ -61,15 +61,14 @@ module RIFCS
       # so we will put them to location element only when
       # the string values are not empty and valid.
       attributes = {}
-      if !location[:date_from].nil? and !location[:date_from].blank?
+      if !location[:date_from].nil? and !location[:date_from].to_s.blank?
         attributes[:dateFrom] = location[:date_from]
       end
 
-      if !location[:date_to].nil? and !location[:date_to].blank?
+      if !location[:date_to].nil? and !location[:date_to].to_s.blank?
         attributes[:dateTo] = location[:date_to]
       end
 
-      attributes[:type] = location[:type]
       xml.location_(attributes) do
         addresses(location[:addresses], xml)
         spatials(location[:spatials], xml)
@@ -224,7 +223,11 @@ module RIFCS
   def self.subjects(list, xml)
     return if list.nil? or list.empty?
     list.each do |subject|
-      xml.subject_(subject[:value], :termIdentifier => subject[:term_identifier], :type => subject[:type], 'xml:lang' => getLang(subject))
+      if !subject[:term_identifier].blank?
+        xml.subject_(subject[:value], :termIdentifier => subject[:term_identifier], :type => subject[:type], 'xml:lang' => getLang(subject))
+      else
+        xml.subject_(subject[:value], :type => subject[:type], 'xml:lang' => getLang(subject))
+      end
     end
   end
 
