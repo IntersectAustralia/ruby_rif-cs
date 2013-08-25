@@ -12,7 +12,7 @@ module RIFCS
           xml.service_(:dateModified => service_date_modified, :type => service_type) do
 
             if respond_to?(:service_identifiers)
-              RIFCS::list_of(service_identifiers, :identifiers, xml)
+              RIFCS::list_of(service_identifiers, :identifier, xml)
             else
               xml.identifier(service_key, :type => 'uri')
             end

@@ -13,7 +13,7 @@ module RIFCS
           xml.activity_(:dateModified => activity_date_modified, :type => activity_type) do
 
             if respond_to?(:activity_identifiers)
-              RIFCS::list_of(activity_identifiers, :identifiers, xml)
+              RIFCS::list_of(activity_identifiers, :identifier, xml)
             else
               xml.identifier(activity_key, :type => 'uri')
             end

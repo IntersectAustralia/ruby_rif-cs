@@ -36,7 +36,7 @@ Gem::Specification.new do |s|
     "spec/files/collection.xml",
     "spec/files/party.xml",
     "spec/files/service.xml",
-    "spec/rif-cs_records.rb",
+    "spec/rif-cs_records_spec.rb",
     "spec/rif-cs_spec.rb",
     "spec/spec_helper.rb"
   ]

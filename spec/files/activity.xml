@@ -1,14 +1,14 @@
-<registryObjects xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
+<registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
   <registryObject group="test group">
     <key>a key</key>
     <originatingSource>tomato</originatingSource>
     <activity dateModified="2012-06-13 14:00:00 UTC" type="program">
-      <identifiers type="uri">http://example.com</identifiers>
-      <identifiers type="local">123</identifiers>
-      <name dateFrom="" dateTo="" type="primary" xml:lang="en">
-        <namePart type="">Testing of software</namePart>
+      <identifier type="uri">http://example.com</identifier>
+      <identifier type="local">123</identifier>
+      <name type="primary" xml:lang="en">
+        <namePart>Testing of software</namePart>
       </name>
-      <location dateFrom="2012-06-13 14:00:00 UTC" dateTo="" type="">
+      <location dateFrom="2012-06-13 14:00:00 UTC">
         <address>
           <electronic type="email">
             <value>joe@example.com</value>
@@ -20,7 +20,7 @@
           <physical type="postalAddress" xml:lang="en">
             <addressPart type="country">Austrlia</addressPart>
           </physical>
-          <physical type="" xml:lang="en">
+          <physical xml:lang="en">
             <addressPart type="telephoneNumber">+61 2 9123 4567</addressPart>
           </physical>
         </address>
@@ -33,8 +33,8 @@
           <text>Self destructs in 1 year</text>
         </temporal>
       </coverage>
-      <descriptions type="brief" xml:lang="en">An activity</descriptions>
-      <descriptions type="full">Not just any activity</descriptions>
+      <description type="brief" xml:lang="en">An activity</description>
+      <description type="full">Not just any activity</description>
       <existenceDates>
         <startDate dateFormat="UTC">2012-06-13 14:00:00 UTC</startDate>
         <endDate dateFormat="UTC">2013-06-13 14:00:00 UTC</endDate>
@@ -52,9 +52,9 @@
       <rights>
         <rightsStatement rightsUri="http://www.intersect.org.au/policies">Copyright 2012 Intersect Australia Ltd.</rightsStatement>
         <licence rightsUri="http://creativecommons.org/licenses/by/3.0">Attribution (CC BY)</licence>
-        <accessRights rightsUri="">Available to all without restriction</accessRights>
+        <accessRights>Available to all without restriction</accessRights>
       </rights>
-      <subject termIdentifier="" type="anzsrc-for" xml:lang="en">123456</subject>
+      <subject type="anzsrc-for" xml:lang="en">123456</subject>
     </activity>
   </registryObject>
 </registryObjects>

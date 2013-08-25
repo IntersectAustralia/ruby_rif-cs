@@ -332,7 +332,7 @@ EOX
   <rights>
     <rightsStatement rightsUri="http://www.intersect.org.au/policies">Copyright 2012 Intersect Australia Ltd.</rightsStatement>
     <licence rightsUri="http://creativecommons.org/licenses/by/3.0">Attribution (CC BY)</licence>
-    <accessRights rightsUri="">Available to all without restriction</accessRights>
+    <accessRights>Available to all without restriction</accessRights>
   </rights>
 </root>
 EOX

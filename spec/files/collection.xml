@@ -1,16 +1,16 @@
-<registryObjects xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
+<registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
   <registryObject group="test group">
     <key>a key</key>
     <originatingSource>tomato</originatingSource>
     <collection dateModified="2012-06-13 14:00:00 UTC" type="dataset" dateAccessioned="2012-06-13 14:00:00 UTC">
-      <identifiers type="uri">http://example.com</identifiers>
-      <identifiers type="local">123</identifiers>
-      <name dateFrom="" dateTo="" type="primary" xml:lang="en">
+      <identifier type="uri">http://example.com</identifier>
+      <identifier type="local">123</identifier>
+      <name type="primary" xml:lang="en">
         <namePart type="title">Dr</namePart>
         <namePart type="given">John</namePart>
         <namePart type="family">Doe</namePart>
       </name>
-      <location dateFrom="2012-06-13 14:00:00 UTC" dateTo="" type="">
+      <location dateFrom="2012-06-13 14:00:00 UTC">
         <address>
           <electronic type="email">
             <value>joe@example.com</value>
@@ -22,7 +22,7 @@
           <physical type="postalAddress" xml:lang="en">
             <addressPart type="country">Austrlia</addressPart>
           </physical>
-          <physical type="" xml:lang="en">
+          <physical xml:lang="en">
             <addressPart type="telephoneNumber">+61 2 9123 4567</addressPart>
           </physical>
         </address>
@@ -45,18 +45,18 @@
         <key>some group</key>
         <relation type="isMemberOf"/>
       </relatedObject>
-      <subject termIdentifier="" type="anzsrc-for" xml:lang="en">123456</subject>
-      <descriptions type="brief" xml:lang="en">A researcher</descriptions>
-      <descriptions type="full">Not just any researcher</descriptions>
+      <subject type="anzsrc-for" xml:lang="en">123456</subject>
+      <description type="brief" xml:lang="en">A researcher</description>
+      <description type="full">Not just any researcher</description>
       <rights>
         <rightsStatement rightsUri="http://www.intersect.org.au/policies">Copyright 2012 Intersect Australia Ltd.</rightsStatement>
         <licence rightsUri="http://creativecommons.org/licenses/by/3.0">Attribution (CC BY)</licence>
-        <accessRights rightsUri="">Available to all without restriction</accessRights>
+        <accessRights>Available to all without restriction</accessRights>
       </rights>
       <fullCitation style="Harvard">Australian Bureau of Agricultural and Resource Economics 2001, Aquaculture development in Australia: a review of key economic issues, ABARE, Canberra.</fullCitation>
       <citationMetadata>
-        <identifier type="isbn">1234</identifier>
-        <contributor seq="">
+        <identifier>1234</identifier>
+        <contributor>
           <namePart type="title">Dr</namePart>
           <namePart type="given">Jane</namePart>
           <namePart type="family">Doe</namePart>

@@ -13,7 +13,7 @@ module RIFCS
           xml.collection_(:dateModified => collection_date_modified, :type => collection_type, :dateAccessioned => collection_date_accessioned) do
 
             if respond_to?(:collection_identifiers)
-              RIFCS::list_of(collection_identifiers, :identifiers, xml)
+              RIFCS::list_of(collection_identifiers, :identifier, xml)
             else
               xml.identifier(collection_key, :type => 'uri')
             end
@@ -43,14 +43,28 @@ module RIFCS
     def citation_info(list, xml)
       return if list.nil? or list.empty?
       list.each do |citation|
-        xml.fullCitation_(citation[:full_citation][:value], :style => citation[:full_citation][:style]) 
+        if citation.has_key?(:full_citation)
+          attributes = {}
+          if !citation[:full_citation][:style].nil? && !citation[:full_citation][:style].blank?
+            attributes[:style] = citation[:full_citation][:style]
+          end
+          xml.fullCitation_(citation[:full_citation][:value], attributes)
+        end
         xml.citationMetadata_ do
           meta_obj = citation[:citation_metadata]
-          xml.identifier(meta_obj[:identifier][:value], :type => meta_obj[:identifier][:type])
+          xml.identifier(meta_obj[:identifier][:value])
           meta_obj[:contributor].each do |name|
-            xml.contributor_(:seq => name[:seq]) do
+            contributor_attributes = {}
+            if !name[:seq].nil? && !name[:seq].blank?
+              contributor_attributes[:seq] = name[:seq]
+            end
+            xml.contributor_(contributor_attributes) do
               name[:name_parts].each do |part|
-                xml.namePart_(part[:value], :type => part[:type])
+                namepart_attributes = {}
+                if !part[:type].nil? && !part[:type].blank?
+                  namepart_attributes[:type] = part[:type]
+                end
+                xml.namePart_(part[:value], namepart_attributes)
               end
             end
           end
@@ -63,7 +77,7 @@ module RIFCS
           end if meta_obj.has_key?(:date)
           xml.url_(meta_obj[:url])
           xml.context_(meta_obj[:context])
-        end
+        end if citation.has_key?(:citation_metadata)
       end
     end
 

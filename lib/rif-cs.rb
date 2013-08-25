@@ -37,7 +37,9 @@ module RIFCS
         attributes[:dateTo] = name[:date_to]
       end
 
-      attributes[:type] = name[:type]
+      if !name[:type].nil? and !name[:type].to_s.blank?
+        attributes[:type] = name[:type]
+      end
       attributes['xml:lang'] = getLang(name)
 
      xml.name_(attributes) do
@@ -100,7 +102,11 @@ module RIFCS
   def self.electronic_addresses(addr_list, xml)
     return if addr_list.nil? or addr_list.empty?  or (addr_list.size == 1 &&  addr_list[0][:value].blank? )
     addr_list.each do |addr|
-      xml.electronic_(:type => addr[:type]) do
+      attributes = {}
+      if !addr[:type].nil? && !addr[:type].blank?
+        attributes[:type] = addr[:type]
+      end
+      xml.electronic_(attributes) do
         xml.value_ addr[:value]
         if addr.has_key?(:args)
           addr[:args].each do |arg|
@@ -114,7 +120,12 @@ module RIFCS
   def self.physical_addresses(addr_list, xml)
     return if addr_list.nil? or addr_list.empty? or (addr_list.size == 1 &&  addr_list[0][:address_parts][0][:value].blank? )
     addr_list.each do |addr|
-      xml.physical_(:type => addr[:type], 'xml:lang' => getLang(addr) ) do
+      attributes = {}
+      if !addr[:type].nil? && !addr[:type].blank?
+        attributes[:type] = addr[:type]
+      end
+      attributes['xml:lang'] = getLang(addr)
+      xml.physical_(attributes) do
         addr[:address_parts].each do |addr_part|
           xml.addressPart_(addr_part[:value], :type => addr_part[:type])
         end
@@ -201,7 +212,11 @@ module RIFCS
   def self.related_info(list, xml)
     return if list.nil? or list.empty?
     list.each do |info|
-      xml.relatedInfo_(:type => info[:type]) do
+      attributes = {}
+      if !info[:type].nil? && !info[:type].blank?
+        attributes[:type] = info[:type]
+      end
+      xml.relatedInfo_(attributes) do
         xml.identifier_(info[:identifier][:value], :type => info[:identifier][:type])
         xml.title_(info[:title]) if info.has_key?(:title)
         xml.notes(info[:notes]) if info.has_key?(:notes)
@@ -213,9 +228,33 @@ module RIFCS
     return if list.nil? or list.empty?
     list.each do |rights|
       xml.rights_ do
-        xml.rightsStatement_(rights[:rights_statement][:value], :rightsUri => rights[:rights_statement][:rights_uri]) if rights.has_key?(:rights_statement)
-        xml.licence_(rights[:licence][:value], :rightsUri => rights[:licence][:rights_uri]) if rights.has_key?(:licence)
-        xml.accessRights_(rights[:access_rights][:value], :rightsUri => rights[:access_rights][:rights_uri]) if rights.has_key?(:access_rights)
+        if rights.has_key?(:rights_statement)
+          right_statement_attributes = {}
+          if !rights[:rights_statement][:rights_uri].nil? && !rights[:rights_statement][:rights_uri].blank?
+          right_statement_attributes[:rightsUri] = rights[:rights_statement][:rights_uri]
+          end
+          xml.rightsStatement_(rights[:rights_statement][:value], right_statement_attributes)
+        end
+        if rights.has_key?(:licence)
+          license_attributes = {}
+          if !rights[:licence][:rights_uri].nil? && !rights[:licence][:rights_uri].blank?
+            license_attributes[:rightsUri] = rights[:licence][:rights_uri]
+          end
+          if !rights[:licence][:type].nil? && !rights[:licence][:type].blank?
+            license_attributes[:type] = rights[:licence][:type]
+          end
+          xml.licence_(rights[:licence][:value], license_attributes)
+        end
+        if rights.has_key?(:access_rights)
+          access_right_attributes = {}
+          if !rights[:access_rights][:rights_uri].nil? && !rights[:access_rights][:rights_uri].blank?
+          access_right_attributes[:rightsUri] = rights[:access_rights][:rights_uri]
+          end
+          if !rights[:access_rights][:type].nil? && !rights[:access_rights][:type].blank?
+          access_right_attributes[:type] = rights[:access_rights][:type]
+          end
+          xml.accessRights_(rights[:access_rights][:value], access_right_attributes)
+        end
       end
     end
   end
@@ -223,7 +262,7 @@ module RIFCS
   def self.subjects(list, xml)
     return if list.nil? or list.empty?
     list.each do |subject|
-      if !subject[:term_identifier].blank?
+      if !subject[:term_identifier].nil? && !subject[:term_identifier].blank?
         xml.subject_(subject[:value], :termIdentifier => subject[:term_identifier], :type => subject[:type], 'xml:lang' => getLang(subject))
       else
         xml.subject_(subject[:value], :type => subject[:type], 'xml:lang' => getLang(subject))

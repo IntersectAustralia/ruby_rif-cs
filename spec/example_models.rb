@@ -658,7 +658,6 @@ class CollectionExample
         },
         citation_metadata: {
           identifier: {
-            type: 'isbn',
             value: '1234'
           },
           contributor: [

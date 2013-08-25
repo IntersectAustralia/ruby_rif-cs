@@ -1,13 +1,13 @@
-<registryObjects xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
+<registryObjects xmlns="http://ands.org.au/standards/rif-cs/registryObjects" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ands.org.au/standards/rif-cs/registryObjects http://services.ands.org.au/documentation/rifcs/1.3/schema/registryObjects.xsd">
   <registryObject group="Intersect Australia">
     <key>service key</key>
     <originatingSource>http://www.intersect.org.au</originatingSource>
     <service dateModified="2012-06-13 14:00:00 UTC" type="create">
-      <identifiers type="local">hdl:1959.4/004_311</identifiers>
+      <identifier type="local">hdl:1959.4/004_311</identifier>
       <name dateFrom="2012-06-14 00:00:00 +1000" dateTo="2013-06-14 00:00:00 +1000" type="create" xml:lang="en">
-        <namePart type="">Autolab PGSTAT 12 Potentiostat</namePart>
+        <namePart>Autolab PGSTAT 12 Potentiostat</namePart>
       </name>
-      <location dateFrom="" dateTo="" type="">
+      <location>
         <address>
           <electronic type="email">
             <value>joe@example.com</value>
@@ -15,7 +15,7 @@
           <physical type="postalAddress" xml:lang="en">
             <addressPart type="country">Austrlia</addressPart>
           </physical>
-          <physical type="" xml:lang="en">
+          <physical xml:lang="en">
             <addressPart type="telephoneNumber">+61 2 9123 4567</addressPart>
           </physical>
         </address>
@@ -37,13 +37,13 @@
         <key>some group</key>
         <relation type="isPresentedBy"/>
       </relatedObject>
-      <descriptions type="deliverymethod">offline</descriptions>
-      <descriptions type="full">General-purpose potentiostat.</descriptions>
+      <description type="deliverymethod">offline</description>
+      <description type="full">General-purpose potentiostat.</description>
       <accessPolicies>http://example.com/policy</accessPolicies>
       <rights>
         <rightsStatement rightsUri="http://www.intersect.org.au/policies">Copyright 2012 Intersect Australia Ltd.</rightsStatement>
         <licence rightsUri="http://creativecommons.org/licenses/by/3.0">Attribution (CC BY)</licence>
-        <accessRights rightsUri="">Available to all without restriction</accessRights>
+        <accessRights>Available to all without restriction</accessRights>
       </rights>
       <existenceDates>
         <startDate dateFormat="UTC">2012-06-13 14:00:00 UTC</startDate>
